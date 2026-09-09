@@ -107,6 +107,14 @@
             <default>[]</default>
             <summary>List of upower devices that reports battery level</summary>
         </key>
+        <key name="enable-hid-level-icon" type="b">
+            <default>false</default>
+            <summary>"enable indicator for USB HID devices using vendor battery protocols"</summary>
+        </key>
+        <key name="hid-device-list" type="as">
+            <default>[]</default>
+            <summary>List of USB HID devices that reports battery level</summary>
+        </key>
         <key name="attenuated-on-destroy-info" type="as">
             <default>[]</default>
             <summary>On destroy attenuated info</summary>

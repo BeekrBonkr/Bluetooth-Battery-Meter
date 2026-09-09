@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface domain="Bluetooth-Battery-Meter@maniacx.github.com">
+  <template class="BluetoothBatteryMeter_HidDeviceUI" parent="AdwPreferencesPage">
+    <property name="name">USB HID</property>
+    <property name="title" translatable="yes">USB HID</property>
+    <property name="icon-name">bbm-input-mouse-symbolic</property>
+    <child>
+      <object class="AdwPreferencesGroup">
+        <property name="title" translatable="yes">Enable USB HID Devices</property>
+        <child>
+          <object class="AdwSwitchRow" id="enable_hid_level_icon">
+            <property name="title" translatable="yes">Enable indicator for USB HID devices</property>
+            <property name="subtitle" translatable="yes">Some wireless mice, such as Keychron mice connected with a USB cable or through their 2.4GHz receiver, do not report battery level to the system. Enable this option to query the battery level directly from the device using its vendor protocol and display it in the GNOME system tray.</property>
+          </object>
+        </child>
+      </object>
+    </child>
+    <child>
+      <object class="AdwPreferencesGroup" id="hid_permission_group">
+        <property name="title" translatable="yes">Device Permissions</property>
+        <property name="description" translatable="yes">The extension needs read and write access to the device's hidraw node. If a device below is marked as "No permission", create a udev rule with the content shown here, then reconnect the device.</property>
+        <child>
+          <object class="AdwActionRow" id="hid_permission_row">
+            <property name="title">/etc/udev/rules.d/70-bluetooth-battery-meter-hid.rules</property>
+            <property name="subtitle">SUBSYSTEM=="hidraw", ATTRS{idVendor}=="3434", TAG+="uaccess"</property>
+            <property name="subtitle-selectable">True</property>
+            <child type="suffix">
+              <object class="GtkButton" id="hid_permission_copy_button">
+                <property name="icon-name">edit-copy-symbolic</property>
+                <property name="tooltip-text" translatable="yes">Copy udev rule to clipboard</property>
+                <property name="valign">center</property>
+                <style>
+                  <class name="flat"/>
+                </style>
+              </object>
+            </child>
+          </object>
+        </child>
+      </object>
+    </child>
+    <child>
+      <object class="AdwPreferencesGroup" id="hid_device_group">
+        <property name="title" translatable="yes">Configuration by Device</property>
+        <property name="description" translatable="yes">Note: General settings override device-specific settings</property>
+        <child>
+          <object class="AdwActionRow" id="no_online_row">
+            <property name="title" translatable="yes">No compatible device found!</property>
+          </object>
+        </child>
+      </object>
+    </child>
+  </template>
+</interface>
